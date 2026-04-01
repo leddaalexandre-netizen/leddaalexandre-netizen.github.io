@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat — Alexandre</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/chatbot.css">
+</head>
+<body>
+
+  <div class="chat-app">
+
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="bot-avatar">A</div>
+      <div class="bot-info">
+        <span class="bot-name">Alexandre</span>
+        <span class="bot-status"><span class="status-dot"></span>En ligne</span>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="chat-messages" id="messages"></div>
+
+    <!-- Suggestions -->
+    <div class="suggestions" id="suggestions">
+      <button class="suggestion-btn" data-msg="Qui es-tu ?">👋 Qui es-tu ?</button>
+      <button class="suggestion-btn" data-msg="Quels sont tes projets ?">🚀 Tes projets</button>
+      <button class="suggestion-btn" data-msg="Quelles sont tes compétences ?">💡 Tes compétences</button>
+      <button class="suggestion-btn" data-msg="Comment te contacter ?">📬 Te contacter</button>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input-bar">
+      <input type="text" id="user-input" placeholder="Écris un message…" autocomplete="off" maxlength="200">
+      <button id="send-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  <a href="project.html?id=8" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#7b5ea7;color:white;padding:0.6rem 1.2rem;border-radius:999px;text-decoration:none;font-family:sans-serif;font-size:0.85rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:1000;">← Portfolio</a>
+
+  <script src="../js/chatbot.js"></script>
+</body>
+</html>

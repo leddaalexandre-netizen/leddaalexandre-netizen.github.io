@@ -1,0 +1,157 @@
+body {
+    background: linear-gradient(120deg, #e3f2fd, #fce4ec, #ffffff);
+    background-size: 300% 300%;
+    animation: fadeIn 1s ease-in, gradientMove 12s ease infinite;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin: 40px;
+    color: #333333;
+}
+
+h1 {
+    color: #0d47a1;
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #0d47a1;
+    font-size: 26px;
+    margin-top: 25px;
+    background-color: rgb(255, 255, 255);
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 6px solid #90caf9;
+}
+
+h3 {
+    color: #0d47a1;
+    font-size: 20px;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+}
+
+b, strong {
+    color: #0d47a1;
+}
+
+i, em {
+    color: #0d47a1;
+}
+
+ul {
+    margin-bottom: 18px;
+    padding-left: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 6px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    box-shadow: 0px 6px 15px rgb(180, 180, 180);
+    transition: transform 0.3s;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+section img {
+    max-width: 400px;
+    width: 100%;
+}
+
+a svg {
+    display: block;
+    margin: auto;
+}
+
+main svg {
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0px 6px 15px rgb(180, 180, 180);
+    margin: auto;
+    transition: transform 0.3s;
+}
+
+main svg:hover {
+    transform: scale(1.05);
+}
+
+main {
+    max-width: 900px;
+    margin: auto;
+}
+
+
+section {
+    margin-bottom: 50px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 15px rgb(180, 180, 180);
+}
+
+footer {
+    text-align: center;
+    font-size: 14px;
+    color: rgb(120, 120, 120);
+    margin-top: 40px;
+}
+
+a {
+    color: #0d47a1;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    section {
+        padding: 12px;
+    }
+}

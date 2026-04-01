@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projet — Portfolio</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../css/projet.css" />
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+<div id="halo"></div>
+
+<nav>
+  <a href="../index.html" class="logo" aria-label="Accueil">
+    <svg width="42" height="32" viewBox="0 0 42 32" fill="none">
+      <text x="0" y="24" font-family="'Segoe UI', monospace" font-size="22" font-weight="700" fill="url(#grad2)">&lt;/&gt;</text>
+      <defs>
+        <linearGradient id="grad2" x1="0" y1="0" x2="42" y2="32" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#7b5ea7"/>
+          <stop offset="100%" stop-color="#c77dff"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </a>
+  <ul>
+    <li><a href="../index.html#hero">Accueil</a></li>
+    <li><a href="../index.html#about">À propos</a></li>
+    <li><a href="../index.html#skills">Compétences</a></li>
+    <li><a href="../index.html#projects">Projets</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+  <button id="theme-toggle" title="Changer le thème">🌙</button>
+</nav>
+
+<main id="main-content">
+<!-- Contenu injecté par JS -->
+</main>
+
+<script src="../js/project-script.js"></script>
+</body>
+</html>

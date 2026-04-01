@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Météo</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/meteo.css">
+</head>
+<body>
+
+  <div class="app" id="app">
+
+    <div class="search-bar">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search" placeholder="Rechercher une ville..." autocomplete="off" spellcheck="false">
+      </div>
+      <button class="locate-btn" id="locate-btn" title="Utiliser ma position">📍</button>
+    </div>
+
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <span>Chargement...</span>
+    </div>
+
+    <div id="error" class="error hidden"></div>
+
+    <div id="content" class="content hidden">
+
+      <!-- Carte principale -->
+      <div class="main-card">
+        <div class="city-line">
+          <span class="city-name" id="city-name"></span>
+          <span class="country"   id="country"></span>
+        </div>
+        <div class="weather-icon" id="weather-icon"></div>
+        <div class="main-temp"    id="main-temp"></div>
+        <div class="condition"    id="condition"></div>
+        <div class="temp-range"   id="temp-range"></div>
+      </div>
+
+      <!-- Détails -->
+      <div class="details-grid">
+        <div class="detail-card">
+          <span class="detail-icon">💧</span>
+          <span class="detail-label">Humidité</span>
+          <span class="detail-value" id="humidity"></span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-icon">💨</span>
+          <span class="detail-label">Vent</span>
+          <span class="detail-value" id="wind"></span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-icon">🌡️</span>
+          <span class="detail-label">Ressenti</span>
+          <span class="detail-value" id="feels"></span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-icon">🌧️</span>
+          <span class="detail-label">Précip.</span>
+          <span class="detail-value" id="precip"></span>
+        </div>
+      </div>
+
+      <!-- Prévisions horaires -->
+      <p class="section-title">Aujourd'hui — heure par heure</p>
+      <div class="hourly-scroll" id="hourly"></div>
+
+      <!-- Prévisions 7 jours -->
+      <p class="section-title">7 prochains jours</p>
+      <div class="daily-list" id="daily"></div>
+
+    </div>
+  </div>
+
+  <a href="project.html?id=5" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#0d47a1;color:white;padding:0.6rem 1.2rem;border-radius:999px;text-decoration:none;font-family:sans-serif;font-size:0.85rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:1000;">← Portfolio</a>
+
+  <script src="../js/meteo.js"></script>
+</body>
+</html>

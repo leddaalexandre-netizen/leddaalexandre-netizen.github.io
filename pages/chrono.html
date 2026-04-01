@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronomètre</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/chrono.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <span class="app-name">Chrono</span>
+  </header>
+
+  <div class="watch-wrap" id="watch-wrap">
+    <svg class="watch-ring" width="300" height="300" viewBox="0 0 300 300">
+      <circle class="ring-bg"   cx="150" cy="150" r="130"/>
+      <circle class="ring-fill" cx="150" cy="150" r="130" id="ring-fill"/>
+    </svg>
+    <div class="time-display">
+      <div class="time-main">
+        <span id="minutes">00</span><span class="colon">:</span><span id="seconds">00</span>
+      </div>
+      <div class="time-cs" id="cs">.00</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn-secondary" id="lap-btn">Tour</button>
+    <button class="btn-main"      id="start-btn">Start</button>
+    <button class="btn-secondary" id="reset-btn">Reset</button>
+  </div>
+
+  <div class="laps-wrap" id="laps-wrap" style="display:none">
+    <div class="laps-header">
+      <span>Tour</span><span>Temps tour</span><span>Total</span>
+    </div>
+    <div class="laps" id="laps"></div>
+  </div>
+
+  <a href="project.html?id=2" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#0d47a1;color:white;padding:0.6rem 1.2rem;border-radius:999px;text-decoration:none;font-family:sans-serif;font-size:0.85rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:1000;">← Portfolio</a>
+
+  <script src="../js/chrono.js"></script>
+</body>
+</html>

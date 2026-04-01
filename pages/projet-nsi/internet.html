@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet : généralités</title>
+    <link rel="stylesheet" href="../../css/projet-web.css"/>
+</head>
+
+<body>
+
+<p>
+    <a href="index.html" aria-label="Retour au sommaire">
+
+<svg width="120" height="120" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#90caf9"/>
+<stop offset="100%" stop-color="#0d47a1"/>
+</linearGradient>
+
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+<feDropShadow dx="0" dy="6" stdDeviation="6" flood-opacity="0.25"/>
+</filter>
+</defs>
+
+<circle cx="70" cy="70" r="45" fill="url(#grad)" filter="url(#shadow)"/>
+
+<circle cx="70" cy="70" r="28" fill="none" stroke="white" stroke-width="3"/>
+<ellipse cx="70" cy="70" rx="28" ry="12" fill="none" stroke="white" stroke-width="3"/>
+<line x1="42" y1="70" x2="98" y2="70" stroke="white" stroke-width="3"/>
+
+</svg>
+
+</a>
+</p>
+
+<header>
+    <h1>Internet : généralités</h1>
+</header>
+
+<main>
+
+<section>
+
+    <h2>Introduction</h2>
+
+    <p>
+        Internet est un <strong>réseau d'ordinateurs</strong> qui communiquent entre eux.
+        Il permet à de nombreux services de fonctionner, notamment le
+        <strong><em>web</em></strong>, le courrier électronique et le transfert de fichiers.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>I La circulation des données sur <em>Internet</em></h2>
+
+    <p>
+        Au c&#339;ur d'internet, ce sont majoritairement des câbles sous-marins
+        <u>transocéaniques</u> qui font passer les données sur des
+        <u><strong>fibres optiques</strong></u>.
+    </p>
+
+    <p>
+        Les données sont découpées en <strong>paquets</strong> d'une taille maximale de
+        1500 octets puis ils sont <u>acheminés séparément</u>.
+        Ils n'empruntent pas nécessairement la même route puis ils sont
+        <strong>réordonnés</strong>. Ainsi, s'il y a un problème réseau,
+        seuls les paquets perdus sont rechargés.
+    </p>
+
+    <p>
+        Des machines, appelées <u><em>routeurs</em></u> guident ces paquets à travers
+        le réseau jusqu'à leur destinataire où ils sont réassemblés.
+        Le routeur détermine le <u>meilleur chemin</u> en fonction de l'encombrement
+        du réseau. Lorsque les paquets ont passé trop de temps sur internet,
+        ils sont détruits par la machine qui détecte le dépassement.
+        Les données sont transportées sur Internet grâce à un
+        <strong>ensemble de règles de communication</strong> appelé
+        <strong><u>protocole TCP/IP</u></strong>
+    </p>
+
+    <p>
+        <img src="../../image/circulation.png" alt="Schéma de la circulation des données en paquets sur Internet">
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>II L'annuaire d'Internet</h2>
+
+    <p>
+        Une <strong>adresse IP</strong>, une série de chiffres, correspond à une
+        <u>adresse symbolique</u>, sous forme textuelle et vice-versa.
+        La correspondance entre adresses IP et symbolique se trouve dans
+        l'annuaire DNS, un ensemble de données réparties sur des serveurs
+        dans tout le réseau.
+    </p>
+
+    <p>
+        Les adresses <strong>IPv4</strong> sont constituées de quatre octets.
+    </p>
+
+    <p>
+        <img src="../../image/adresse.png" alt="Schéma d'une adresse IPv4 avec ses quatre octets">
+    </p>
+
+    <p>
+        => tous les nombres sont compris entre 0 et 255.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>III Les réseaux pairs à pairs</h2>
+
+    <p>
+        Dans un réseau <strong>pair-à-pair</strong> (P2P), les machines émettent et
+        répondent à des requêtes d'autres machines : elles sont à la fois
+        <u><em>client et serveur</em></u>. Le P2P est parfois utilisé pour
+        échanger des fichiers de manière illégale (films, musique).
+    </p>
+
+    <p>
+        <img src="../../image/pair-2-pair.png" alt="Schéma d'un réseau pair-à-pair (P2P)">
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>Le modèle TCP/IP</h2>
+
+    <p>
+        <strong>Application</strong> : c'est la couche supérieure
+    </p>
+
+    <p>
+        le protocole <strong>http</strong> pour aller sur le <em>web</em> ;<br>
+        <strong>tls</strong> pour la sécurité ;<br>
+        <strong>smtp, pop, imap</strong> pour les courriels ;<br>
+        <strong>ftp</strong> pour les partages de fichiers.
+    </p>
+
+    <p>
+        <strong>Transport</strong> : Cette couche effectue le transport des données.
+    </p>
+
+    <p>
+        le protocole <strong>TCP</strong> : le plus utilisé car fiable.<br>
+        le protocole <strong>UDP</strong> : plus rapide que le <em>TCP</em> mais il ne
+        vérifie pas si le paquet envoyé a bien atteint sa destination.<br>
+        <strong>Réseau</strong> : elle indique les adresses <em>IP</em> source et de
+        destination à utiliser pour effectuer le transport de données.
+    </p>
+
+    <p>
+        <strong>Accès au réseau</strong> : c'est la couche la plus basse.
+        Elle définit la manière dont les données sont envoyées
+        physiquement via le réseau.
+    </p>
+
+    <p>
+        Ethernet, Wifi, Bluetooth.
+    </p>
+
+</section>
+
+</main>
+
+
+<a href="../project.html?id=6" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#0d47a1;color:white;padding:0.6rem 1.2rem;border-radius:999px;text-decoration:none;font-family:sans-serif;font-size:0.85rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:1000;">← Portfolio</a>
+
+</body>
+</html>

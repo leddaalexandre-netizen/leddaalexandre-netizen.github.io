@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur TJM Freelance</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/tjm.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <span class="logo-icon">💼</span>
+        <span class="logo-text">FreelanceTJM</span>
+      </div>
+      <p class="header-sub">Calculez votre Taux Journalier Moyen en quelques secondes</p>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- ── Formulaire ── -->
+    <section class="panel form-panel">
+
+      <div class="form-group">
+        <label for="salaire">Salaire net mensuel souhaité</label>
+        <div class="input-wrap">
+          <span class="input-prefix">€</span>
+          <input type="number" id="salaire" min="0" step="100" value="3000">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="statut">Statut juridique</label>
+        <select id="statut">
+          <option value="ae_bic">Auto-entrepreneur — BIC (Services)</option>
+          <option value="ae_bnc" selected>Auto-entrepreneur — BNC (Libéral)</option>
+          <option value="sasu">SASU</option>
+          <option value="eurl">EURL / SARL</option>
+          <option value="portage">Portage salarial</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="frais">Frais professionnels annuels</label>
+        <div class="input-wrap">
+          <span class="input-prefix">€</span>
+          <input type="number" id="frais" min="0" step="100" value="1200">
+        </div>
+        <p class="hint">Matériel, logiciels, téléphone, déplacements…</p>
+      </div>
+
+      <hr class="divider">
+      <p class="section-label">Jours non travaillés / an</p>
+
+      <div class="slider-group">
+        <div class="slider-row">
+          <label>Congés <span class="slider-val" id="val-conges">25</span> j</label>
+          <input type="range" id="conges" min="0" max="60" value="25">
+        </div>
+        <div class="slider-row">
+          <label>Jours fériés <span class="slider-val" id="val-feries">11</span> j</label>
+          <input type="range" id="feries" min="0" max="20" value="11">
+        </div>
+        <div class="slider-row">
+          <label>Jours non facturables <span class="slider-val" id="val-nf">20</span> j</label>
+          <input type="range" id="non-facturables" min="0" max="60" value="20">
+          <p class="hint" style="margin-top:0.2rem;">Prospection, admin, formation…</p>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <p class="section-label">Marge commerciale</p>
+
+      <div class="slider-group">
+        <div class="slider-row">
+          <label>Marge <span class="slider-val" id="val-marge">10</span> %</label>
+          <input type="range" id="marge" min="0" max="50" value="10">
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── Résultats ── -->
+    <aside class="panel result-panel">
+
+      <div class="tjm-hero">
+        <p class="tjm-label">Votre TJM recommandé</p>
+        <div class="tjm-value" id="tjm-display">—</div>
+        <button class="copy-btn" id="copy-btn">📋 Copier</button>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-icon">⏰</span>
+          <span class="metric-label">Taux horaire</span>
+          <span class="metric-value" id="taux-horaire">—</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-icon">🌅</span>
+          <span class="metric-label">Demi-journée</span>
+          <span class="metric-value" id="demi-journee">—</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-icon">📅</span>
+          <span class="metric-label">CA mensuel</span>
+          <span class="metric-value" id="ca-mensuel">—</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-icon">📈</span>
+          <span class="metric-label">CA annuel</span>
+          <span class="metric-value" id="ca-annuel">—</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-icon">🗓️</span>
+          <span class="metric-label">Jours facturables</span>
+          <span class="metric-value" id="jours-fact">—</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-icon">⚖️</span>
+          <span class="metric-label">TJM sans marge</span>
+          <span class="metric-value" id="tjm-base">—</span>
+        </div>
+      </div>
+
+      <div class="chart-section">
+        <p class="chart-title">Répartition du CA annuel</p>
+        <div class="stacked-bar">
+          <div class="bar-seg seg-salaire" id="seg-salaire"></div>
+          <div class="bar-seg seg-charges" id="seg-charges"></div>
+          <div class="bar-seg seg-frais"   id="seg-frais"></div>
+          <div class="bar-seg seg-marge"   id="seg-marge"></div>
+        </div>
+        <div class="bar-legend">
+          <span class="leg-item"><span class="leg-dot dot-salaire"></span>Salaire net</span>
+          <span class="leg-item"><span class="leg-dot dot-charges"></span>Charges</span>
+          <span class="leg-item"><span class="leg-dot dot-frais"></span>Frais</span>
+          <span class="leg-item"><span class="leg-dot dot-marge"></span>Marge</span>
+        </div>
+      </div>
+
+      <div id="warnings-box" class="warnings-box hidden"></div>
+
+      <p class="statut-info" id="statut-info"></p>
+
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p>FreelanceTJM — Outil indicatif, consultez un expert-comptable pour votre situation réelle.</p>
+    <p style="margin-top:0.3rem;opacity:0.5;font-size:0.75rem;">Fait par Alexandre LEDDA · 2026</p>
+  </footer>
+
+  <a href="project.html?id=7" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#2563eb;color:white;padding:0.6rem 1.2rem;border-radius:999px;text-decoration:none;font-family:sans-serif;font-size:0.85rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:1000;">← Portfolio</a>
+
+  <script src="../js/tjm.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  background: #0d0d0d;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5rem;
+}
+
+/* ── Topbar ── */
+.topbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1.75rem 0 0;
+  margin-bottom: 2rem;
+}
+.app-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ── Watch face ── */
+.watch-wrap {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 2.5rem;
+}
+
+.watch-ring {
+  position: absolute;
+  top: 0; left: 0;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+  stroke-width: 5;
+}
+
+.ring-fill {
+  fill: none;
+  stroke: #00d4aa;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 816.81;
+  stroke-dashoffset: 816.81;
+  transition: stroke-dashoffset 0.08s linear, stroke 0.3s;
+}
+
+.watch-wrap.running .ring-fill {
+  filter: drop-shadow(0 0 6px #00d4aa);
+}
+
+.time-display {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.time-main {
+  font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 3.4rem;
+  font-weight: 200;
+  letter-spacing: 0.02em;
+  color: #fff;
+  line-height: 1;
+}
+
+.colon {
+  display: inline-block;
+  margin: 0 0.05em;
+  opacity: 0.5;
+}
+
+.time-cs {
+  font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: #00d4aa;
+  letter-spacing: 0.05em;
+}
+
+/* ── Controls ── */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.btn-secondary {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.btn-secondary:disabled { opacity: 0.3; cursor: default; }
+
+.btn-main {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: none;
+  background: #00d4aa;
+  color: #0d0d0d;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  box-shadow: 0 0 28px rgba(0,212,170,0.4);
+}
+.btn-main:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 40px rgba(0,212,170,0.55);
+}
+.btn-main.running {
+  background: #f43f5e;
+  box-shadow: 0 0 28px rgba(244,63,94,0.45);
+}
+.btn-main.running:hover {
+  box-shadow: 0 0 40px rgba(244,63,94,0.65);
+}
+
+/* ── Laps ── */
+.laps-wrap {
+  width: 100%;
+  max-width: 360px;
+  padding: 0 1rem;
+}
+
+.laps-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.laps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.laps::-webkit-scrollbar { width: 3px; }
+.laps::-webkit-scrollbar-track { background: transparent; }
+.laps::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+
+.lap-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0.75rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  animation: lapIn 0.22s ease;
+}
+.lap-item:first-child {
+  background: rgba(0,212,170,0.07);
+  border-color: rgba(0,212,170,0.2);
+}
+
+.lap-num {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 500;
+  min-width: 50px;
+}
+.lap-time {
+  font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+.lap-total {
+  font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+  min-width: 70px;
+  text-align: right;
+}
+
+@keyframes lapIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 380px) {
+  .watch-wrap { width: 260px; height: 260px; }
+  .time-main { font-size: 2.8rem; }
+  .time-cs { font-size: 1.1rem; }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Mix</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/quiz.css">
+</head>
+<body>
+
+  <!-- Intro -->
+  <div id="intro-screen" class="screen active">
+    <div class="card">
+      <div class="intro-icon">🧠</div>
+      <h1 class="intro-title">Quiz Mix</h1>
+      <p class="intro-sub">NSI · Ski · Culture générale</p>
+      <div class="intro-stats">
+        <div class="stat"><span class="stat-num">10</span><span class="stat-label">Questions</span></div>
+        <div class="stat"><span class="stat-num">4</span><span class="stat-label">Choix</span></div>
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label">Thèmes</span></div>
+      </div>
+      <button id="start-btn" class="btn-primary">Commencer →</button>
+    </div>
+  </div>
+
+  <!-- Question -->
+  <div id="question-screen" class="screen">
+    <div class="card">
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="q-header">
+        <span class="badge" id="badge"></span>
+        <span class="counter" id="counter"></span>
+        <span class="score-display" id="score-display">0 pt</span>
+      </div>
+      <p class="question" id="question"></p>
+      <div class="answers" id="answers"></div>
+      <button class="btn-next hidden" id="next-btn">Question suivante →</button>
+    </div>
+  </div>
+
+  <!-- Résultat -->
+  <div id="result-screen" class="screen">
+    <div class="card result-card">
+      <div class="result-emoji" id="result-emoji"></div>
+      <div class="result-score" id="result-score"></div>
+      <p class="result-msg" id="result-msg"></p>
+      <button id="replay-btn" class="btn-primary">Rejouer</button>
+    </div>
+  </div>
+
+  <a href="project.html?id=1" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#0d47a1;color:white;padding:0.6rem 1.2rem;border-radius:999px;text-decoration:none;font-family:sans-serif;font-size:0.85rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:1000;">← Portfolio</a>
+
+  <script src="../js/quiz.js"></script>
+</body>
+</html>

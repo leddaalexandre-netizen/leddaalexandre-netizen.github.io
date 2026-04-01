@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertisseur</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/converter.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <header>
+      <h1>Convertisseur</h1>
+      <p>Choisissez une catégorie</p>
+    </header>
+
+    <div class="categories" id="categories"></div>
+
+    <div class="input-card">
+      <input type="number" id="value-input" placeholder="0" autocomplete="off">
+      <div class="unit-tabs" id="unit-tabs"></div>
+    </div>
+
+    <div class="results" id="results"></div>
+
+  </div>
+
+  <div class="toast" id="toast">Copié !</div>
+
+  <a href="project.html?id=3" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#0d47a1;color:white;padding:0.6rem 1.2rem;border-radius:999px;text-decoration:none;font-family:sans-serif;font-size:0.85rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:1000;">← Portfolio</a>
+
+  <script src="../js/converter.js"></script>
+</body>
+</html>

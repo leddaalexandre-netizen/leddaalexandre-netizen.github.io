@@ -1,0 +1,310 @@
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+--bg:      #0a0a0f;
+--surface: #12121c;
+--border:  #1e1e30;
+--accent:  #7b5ea7;
+--accent2: #c77dff;
+--text:    #e0ddf0;
+--muted:   #6e6a85;
+--glow:    rgba(123, 94, 167, 0.35);
+}
+
+html { scroll-behavior: smooth; }
+
+/* ── Thème clair ── */
+[data-theme="light"] {
+  --bg:      #f4f3ff;
+  --surface: #ffffff;
+  --border:  #dddaf5;
+  --accent:  #7b5ea7;
+  --accent2: #6a3fa0;
+  --text:    #1a1a2e;
+  --muted:   #6e6a85;
+  --glow:    rgba(123, 94, 167, 0.2);
+}
+
+body {
+background: var(--bg);
+color: var(--text);
+font-family: 'Segoe UI', system-ui, sans-serif;
+line-height: 1.7;
+min-height: 100vh;
+}
+
+#canvas {
+position: fixed;
+inset: 0;
+z-index: 0;
+pointer-events: none;
+}
+
+/* ── Nav ── */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1.2rem 3rem;
+background: rgba(10, 10, 15, 0.85);
+backdrop-filter: blur(14px);
+border-bottom: 1px solid var(--border);
+}
+
+nav ul {
+list-style: none;
+display: flex;
+gap: 2.5rem;
+}
+
+nav ul a {
+color: var(--muted);
+text-decoration: none;
+font-size: 0.9rem;
+transition: color 0.2s;
+}
+
+nav ul a:hover { color: var(--text); }
+
+.logo {
+font-size: 1.4rem;
+font-weight: 700;
+background: linear-gradient(135deg, var(--accent), var(--accent2));
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+letter-spacing: 2px;
+text-decoration: none;
+}
+
+/* ── Main ── */
+main {
+position: relative;
+z-index: 1;
+max-width: 860px;
+margin: 0 auto;
+padding: 9rem 2rem 5rem;
+animation: fadeUp 0.7s ease forwards;
+}
+
+/* ── Header projet ── */
+.project-tag {
+display: inline-block;
+padding: 0.3rem 1rem;
+border-radius: 50px;
+background: rgba(123,94,167,0.2);
+color: var(--accent2);
+font-size: 0.8rem;
+letter-spacing: 2px;
+text-transform: uppercase;
+margin-bottom: 1.2rem;
+}
+
+h1 {
+font-size: clamp(2.2rem, 5vw, 3.5rem);
+font-weight: 800;
+line-height: 1.1;
+background: linear-gradient(135deg, #fff 30%, var(--accent2) 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+margin-bottom: 1.5rem;
+}
+
+.project-meta {
+display: flex;
+gap: 2rem;
+flex-wrap: wrap;
+margin-bottom: 3rem;
+padding-bottom: 2rem;
+border-bottom: 1px solid var(--border);
+}
+
+.meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+.meta-label { font-size: 0.75rem; letter-spacing: 2px; color: var(--accent2); text-transform: uppercase; }
+.meta-value { font-size: 0.95rem; color: var(--text); }
+
+/* ── Bannière ── */
+.project-banner {
+width: 100%;
+height: 280px;
+border-radius: 20px;
+background: var(--surface);
+border: 1px solid var(--border);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 5rem;
+margin-bottom: 3rem;
+position: relative;
+overflow: hidden;
+box-shadow: 0 0 60px var(--glow);
+}
+
+.project-banner::before {
+content: '';
+position: absolute;
+inset: -50%;
+background: conic-gradient(from 0deg, transparent, var(--accent2), transparent 60%);
+animation: spin 8s linear infinite;
+opacity: 0.08;
+}
+
+/* ── Contenu ── */
+.section-block { margin-bottom: 2.5rem; }
+
+.section-block h2 {
+font-size: 1.3rem;
+font-weight: 700;
+color: var(--accent2);
+margin-bottom: 1rem;
+display: flex;
+align-items: center;
+gap: 0.6rem;
+}
+
+.section-block h2::before {
+content: '';
+display: inline-block;
+width: 3px;
+height: 1.1em;
+background: var(--accent2);
+border-radius: 2px;
+}
+
+.section-block p { color: var(--muted); font-size: 1rem; }
+
+/* ── Stack technique ── */
+.tech-list {
+display: flex;
+flex-wrap: wrap;
+gap: 0.7rem;
+margin-top: 0.5rem;
+}
+
+.tech-badge {
+padding: 0.35rem 1rem;
+border-radius: 50px;
+border: 1px solid var(--border);
+background: var(--surface);
+font-size: 0.85rem;
+color: var(--text);
+}
+
+/* ── Fonctionnalités ── */
+.feature-list {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 0.7rem;
+margin-top: 0.5rem;
+}
+
+.feature-list li {
+display: flex;
+align-items: flex-start;
+gap: 0.8rem;
+color: var(--muted);
+font-size: 1rem;
+}
+
+.feature-list li::before {
+content: '✦';
+color: var(--accent2);
+font-size: 0.7rem;
+margin-top: 0.35rem;
+flex-shrink: 0;
+}
+
+/* ── Footer ── */
+.project-footer {
+margin-top: 3rem;
+padding-top: 2rem;
+border-top: 1px solid var(--border);
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 1rem;
+}
+
+.project-nav {
+display: flex;
+gap: 0.7rem;
+}
+
+.btn {
+display: inline-block;
+padding: 0.8rem 2rem;
+border-radius: 50px;
+font-size: 0.95rem;
+font-weight: 600;
+text-decoration: none;
+background: linear-gradient(135deg, var(--accent), var(--accent2));
+color: #fff;
+box-shadow: 0 0 30px var(--glow);
+transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover { transform: translateY(-3px); box-shadow: 0 0 50px var(--glow); }
+
+.btn-ghost {
+background: transparent;
+border: 1px solid var(--border);
+color: var(--muted);
+box-shadow: none;
+}
+
+.btn-ghost:hover { border-color: var(--accent); color: var(--text); box-shadow: none; transform: translateY(-2px); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+from { transform: rotate(0deg); }
+to   { transform: rotate(360deg); }
+}
+
+/* ── Halo souris ── */
+#halo {
+position: fixed;
+width: 350px; height: 350px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(123,94,167,0.12) 0%, transparent 70%);
+pointer-events: none;
+z-index: 0;
+transform: translate(-50%, -50%);
+transition: left 0.08s, top 0.08s;
+}
+
+@media (max-width: 600px) {
+nav { padding: 1rem 1.5rem; }
+main { padding: 7rem 1.2rem 4rem; }
+.project-meta { gap: 1.2rem; }
+.project-footer { flex-direction: column; }
+}
+
+/* ── Bouton thème ── */
+#theme-toggle {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  flex-shrink: 0;
+}
+
+#theme-toggle:hover {
+  transform: rotate(20deg);
+  box-shadow: 0 0 16px var(--glow);
+}

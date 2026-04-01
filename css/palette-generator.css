@@ -1,0 +1,267 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #f4f6fb;
+  min-height: 100vh;
+  color: #111827;
+}
+
+/* ── Topbar ── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.back-link {
+  color: #6366f1;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: opacity 0.15s;
+}
+.back-link:hover { opacity: 0.65; }
+
+.app-name {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  color: #111827;
+}
+
+/* ── Main ── */
+main {
+  max-width: 860px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem 4rem;
+}
+
+/* ── Picker card ── */
+.picker-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 20px rgba(0,0,0,0.04);
+  margin-bottom: 1.25rem;
+}
+
+.color-preview {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  flex-shrink: 0;
+  transition: background 0.25s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.picker-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+input[type="color"] {
+  width: 44px;
+  height: 44px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 3px;
+  cursor: pointer;
+  background: #f9fafb;
+  transition: border-color 0.2s;
+}
+input[type="color"]:hover { border-color: #6366f1; }
+
+.hex-input {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.5rem 0.875rem;
+  background: #f9fafb;
+  color: #111827;
+  width: 155px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.hex-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+}
+
+.picker-hint {
+  font-size: 0.82rem;
+  color: #9ca3af;
+  margin-left: auto;
+  max-width: 180px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.tab {
+  padding: 0.5rem 1.1rem;
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+  color: #6b7280;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+.tab:hover {
+  background: #eef2ff;
+  color: #6366f1;
+}
+.tab.active {
+  background: #6366f1;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(99,102,241,0.35);
+}
+
+/* ── Palette ── */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+.swatch {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s;
+  user-select: none;
+}
+.swatch:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+}
+
+.swatch-color {
+  height: 120px;
+  position: relative;
+  transition: background 0.25s;
+}
+
+.swatch-copy-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.18);
+  opacity: 0;
+  transition: opacity 0.18s;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.swatch:hover .swatch-copy-hint { opacity: 1; }
+
+.swatch-info {
+  padding: 0.7rem 0.75rem;
+}
+
+.swatch-hex {
+  display: block;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #111827;
+  margin-bottom: 0.2rem;
+}
+
+.swatch-rgb {
+  display: block;
+  font-size: 0.68rem;
+  color: #9ca3af;
+}
+
+/* ── Export button ── */
+.export-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px dashed #d1d5db;
+  border-radius: 14px;
+  background: #fff;
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.export-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+  background: #eef2ff;
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #111827;
+  color: #fff;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+  opacity: 0;
+  z-index: 1000;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .palette { grid-template-columns: repeat(3, 1fr); }
+  .picker-hint { display: none; }
+}
+@media (max-width: 480px) {
+  .palette { grid-template-columns: repeat(2, 1fr); }
+  .picker-card { flex-wrap: wrap; gap: 1rem; }
+  .hex-input { width: 130px; font-size: 1.2rem; }
+}

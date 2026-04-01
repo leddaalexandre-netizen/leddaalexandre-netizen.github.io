@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palette Studio</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/palette-generator.css">
+</head>
+<body>
+
+  <nav class="topbar">
+    <span></span>
+    <span class="app-name">Palette Studio</span>
+    <span></span>
+  </nav>
+
+  <a href="project.html?id=4" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#0d47a1;color:white;padding:0.6rem 1.2rem;border-radius:999px;text-decoration:none;font-family:sans-serif;font-size:0.85rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:1000;">← Portfolio</a>
+
+  <main>
+
+    <div class="picker-card">
+      <div class="color-preview" id="color-preview"></div>
+      <div class="picker-controls">
+        <input type="color" id="color-input" value="#6366f1">
+        <input type="text" id="hex-input" class="hex-input" value="#6366F1" maxlength="7" spellcheck="false">
+      </div>
+      <p class="picker-hint">Choisissez une couleur de base pour générer votre palette</p>
+    </div>
+
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-type="monochromatic">Monochromatique</button>
+      <button class="tab" data-type="analogous">Analogue</button>
+      <button class="tab" data-type="complementary">Complémentaire</button>
+      <button class="tab" data-type="triadic">Triadique</button>
+      <button class="tab" data-type="tetradic">Tétradique</button>
+    </div>
+
+    <div class="palette" id="palette"></div>
+
+    <button class="export-btn" id="export-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Copier en CSS
+    </button>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/palette-generator.js"></script>
+</body>
+</html>
