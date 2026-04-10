@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets — Alexandre</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/projects.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <a href="../index.html" class="back-link">← Accueil</a>
+    <div class="header-text">
+      <p class="section-label">Portfolio</p>
+      <h1>Mes projets</h1>
+      <p class="header-sub">9 projets construits from scratch</p>
+    </div>
+  </header>
+
+  <!-- Filtres -->
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">Tous</button>
+    <button class="filter-btn" data-filter="Jeu">🎮 Jeux</button>
+    <button class="filter-btn" data-filter="Outil">🛠️ Outils</button>
+    <button class="filter-btn" data-filter="Dashboard">📊 Dashboard</button>
+    <button class="filter-btn" data-filter="Python">🐍 Python</button>
+    <button class="filter-btn" data-filter="JS">⚡ JS</button>
+    <button class="filter-btn" data-filter="Scolaire">🎓 Scolaire</button>
+  </div>
+
+  <!-- Grille -->
+  <main class="projects-grid" id="grid">
+
+    <a href="project.html?id=0" class="project-card" data-tag="Jeu">
+      <div class="card-preview"><img src="../image/preview-snake.png" alt="Snake" loading="lazy"></div>
+      <div class="card-body">
+        <span class="project-tag">Jeu</span>
+        <h2 class="project-title">Snake</h2>
+        <p class="project-desc">Le classique Snake en HTML5 Canvas — design neon arcade, vitesse progressive, record sauvegardé.</p>
+        <span class="project-link">Voir le projet →</span>
+      </div>
+    </a>
+
+    <a href="project.html?id=1" class="project-card" data-tag="Jeu">
+      <div class="card-preview"><img src="../image/preview-quiz.png" alt="Quiz Mix" loading="lazy"></div>
+      <div class="card-body">
+        <span class="project-tag">Jeu</span>
+        <h2 class="project-title">Quiz Mix</h2>
+        <p class="project-desc">Quiz interactif sur 3 thèmes — NSI, ski et culture générale — avec score en direct.</p>
+        <span class="project-link">Voir le projet →</span>
+      </div>
+    </a>
+
+    <a href="project.html?id=2" class="project-card" data-tag="Outil">
+      <div class="card-preview"><img src="../image/preview-chrono.png" alt="Chronomètre" loading="lazy"></div>
+      <div class="card-body">
+        <span class="project-tag">Outil</span>
+        <h2 class="project-title">Chronomètre</h2>
+        <p class="project-desc">Chronomètre au centième de seconde avec anneau animé, tours et historique.</p>
+        <span class="project-link">Voir le projet →</span>
+      </div>
+    </a>
+
+    <a href="project.html?id=3" class="project-card" data-tag="Outil">
+      <div class="card-preview"><img src="../image/preview-converter.png" alt="Convertisseur" loading="lazy"></div>
+      <div class="card-body">
+        <span class="project-tag">Outil</span>
+        <h2 class="project-title">Convertisseur d'unités</h2>
+        <p class="project-desc">Convertisseur instantané sur 6 catégories — longueur, masse, température, vitesse...</p>
+        <span class="project-link">Voir le projet →</span>
+      </div>
+    </a>
+
+    <a href="project.html?id=4" class="project-card" data-tag="Outil">
+      <div class="card-preview"><img src="../image/preview-palette.png" alt="Palettes" loading="lazy"></div>
+      <div class="card-body">
+        <span class="project-tag">Outil</span>
+        <h2 class="project-title">Générateur de palettes</h2>
+        <p class="project-desc">Génère des palettes harmonieuses en 5 modes avec export CSS.</p>
+        <span class="project-link">Voir le projet →</span>
+      </div>
+    </a>
+
+    <a href="project.html?id=5" class="project-card" data-tag="Dashboard">
+      <div class="card-preview"><img src="../image/preview-meteo.png" alt="Météo" loading="lazy"></div>
+      <div class="card-body">
+        <span class="project-tag">Dashboard</span>
+        <h2 class="project-title">Dashboard Météo</h2>
+        <p class="project-desc">Météo en temps réel — recherche de ville, géoloc, prévisions 24h et 7 jours.</p>
+        <span class="project-link">Voir le projet →</span>
+      </div>
+    </a>
+
+    <a href="project.html?id=6" class="project-card" data-tag="Scolaire">
+      <div class="card-preview"><img src="../image/preview-nsi.png" alt="Projet NSI" loading="lazy"></div>
+      <div class="card-body">
+        <span class="project-tag">Scolaire</span>
+        <h2 class="project-title">Projet Web NSI</h2>
+        <p class="project-desc">Premier projet scolaire NSI — internet, web, réseaux sociaux et drapeaux en SVG.</p>
+        <span class="project-link">Voir le projet →</span>
+      </div>
+    </a>
+
+    <a href="project.html?id=7" class="project-card" data-tag="Python">
+      <div class="card-preview"><img src="../image/preview-tjm.png" alt="TJM" loading="lazy"></div>
+      <div class="card-body">
+        <span class="project-tag">Python</span>
+        <h2 class="project-title">Calculateur TJM</h2>
+        <p class="project-desc">Outil freelance — 5 statuts juridiques, sliders, graphique de répartition du CA.</p>
+        <span class="project-link">Voir le projet →</span>
+      </div>
+    </a>
+
+    <a href="project.html?id=8" class="project-card" data-tag="JS">
+      <div class="card-preview"><img src="../image/preview-chatbot.png" alt="Chatbot" loading="lazy"></div>
+      <div class="card-body">
+        <span class="project-tag">JS</span>
+        <h2 class="project-title">Chatbot Portfolio</h2>
+        <p class="project-desc">Assistant conversationnel — moteur par mots-clés, interface chat animée.</p>
+        <span class="project-link">Voir le projet →</span>
+      </div>
+    </a>
+
+  </main>
+
+  <p class="empty-msg hidden" id="empty">Aucun projet dans cette catégorie.</p>
+
+  <script>
+    const btns  = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+    const empty = document.getElementById('empty');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        let visible = 0;
+
+        cards.forEach(card => {
+          const match = filter === 'all' || card.dataset.tag === filter;
+          card.style.display = match ? 'flex' : 'none';
+          if (match) visible++;
+        });
+
+        empty.classList.toggle('hidden', visible > 0);
+      });
+    });
+  </script>
+
+</body>
+</html>

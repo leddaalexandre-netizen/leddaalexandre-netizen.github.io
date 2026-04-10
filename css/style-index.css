@@ -172,6 +172,28 @@ transform: translateY(-3px);
 box-shadow: 0 0 50px var(--glow);
 }
 
+.btn-ghost {
+border: 1.5px solid var(--border);
+color: var(--text);
+background: transparent;
+}
+.btn-ghost:hover {
+border-color: var(--accent);
+color: var(--accent);
+transform: translateY(-3px);
+}
+
+.hero-actions {
+display: flex;
+gap: 1rem;
+justify-content: center;
+flex-wrap: wrap;
+}
+.hero-actions .btn {
+opacity: 1;
+animation: none;
+}
+
 /* ── Scroll indicator ── */
 .scroll-hint {
 position: absolute;

@@ -30,8 +30,9 @@
       <li><a href="#hero">Accueil</a></li>
       <li><a href="#about">À propos</a></li>
       <li><a href="#skills">Compétences</a></li>
-      <li><a href="#projects">Projets</a></li>
+      <li><a href="pages/projects.html">Projets</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="https://github.com/leddaalexandre-netizen" target="_blank" rel="noopener">GitHub</a></li>
     </ul>
     <button id="theme-toggle" title="Changer le thème">🌙</button>
   </nav>
@@ -40,19 +41,23 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-eyebrow">Bienvenue sur mon portfolio</div>
+    <div class="hero-eyebrow">Alexandre LEDDA — Développeur web</div>
 
     <h1 class="hero-title">
-      Créer.<br>
-      Innover.<br>
-      Inspirer.
+      Passionné<br>
+      par le web<br>
+      & l'IA.
     </h1>
 
     <p class="hero-sub">
-      Moniteur de ski le jour, développeur la nuit — j'apprends à construire des interfaces aussi fluides que les pistes.
+      Lycéen développeur — je conçois des projets concrets en HTML, CSS, JS et Python.<br>
+      Moniteur de ski le jour, développeur la nuit.
     </p>
 
-    <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+      <a href="https://github.com/leddaalexandre-netizen" target="_blank" rel="noopener" class="btn btn-ghost">GitHub →</a>
+    </div>
 
     <div class="scroll-hint">SCROLL</div>
   </section>
@@ -151,96 +156,11 @@
   <!-- PROJECTS -->
   <section id="projects">
     <div class="container">
-
       <div class="reveal" style="text-align:center;">
         <p class="section-label">Portfolio</p>
-        <h2 class="section-title">Projets récents</h2>
-      </div>
-
-      <div class="projects-grid">
-
-        <div class="reveal">
-        <a href="pages/project.html?id=0" class="project-card">
-          <div class="card-preview"><img src="image/preview-snake.png" alt="Snake" loading="lazy"></div>
-          <span class="project-tag">Jeu</span>
-          <h3 class="project-title">Snake</h3>
-          <p class="project-desc">Le classique Snake en HTML5 Canvas — design neon arcade, vitesse progressive, record sauvegardé.</p>
-          <span class="project-link">Voir le projet →</span>
-        </a>
-      </div>
-      <div class="reveal">
-        <a href="pages/project.html?id=1" class="project-card">
-          <div class="card-preview"><img src="image/preview-quiz.png" alt="Quiz Mix" loading="lazy"></div>
-          <span class="project-tag">Jeu</span>
-          <h3 class="project-title">Quiz Mix</h3>
-          <p class="project-desc">Quiz interactif sur 3 thèmes — NSI, ski et culture générale — avec score en direct.</p>
-          <span class="project-link">Voir le projet →</span>
-        </a>
-      </div>
-      <div class="reveal">
-        <a href="pages/project.html?id=2" class="project-card">
-          <div class="card-preview"><img src="image/preview-chrono.png" alt="Chronomètre" loading="lazy"></div>
-          <span class="project-tag">Outil</span>
-          <h3 class="project-title">Chronomètre</h3>
-          <p class="project-desc">Chronomètre au centième de seconde avec anneau animé, tours et historique.</p>
-          <span class="project-link">Voir le projet →</span>
-        </a>
-      </div>
-      <div class="reveal">
-        <a href="pages/project.html?id=3" class="project-card">
-          <div class="card-preview"><img src="image/preview-converter.png" alt="Convertisseur" loading="lazy"></div>
-          <span class="project-tag">Outil</span>
-          <h3 class="project-title">Convertisseur d'unités</h3>
-          <p class="project-desc">Convertisseur instantané sur 6 catégories — longueur, masse, température, vitesse...</p>
-          <span class="project-link">Voir le projet →</span>
-        </a>
-      </div>
-      <div class="reveal">
-        <a href="pages/project.html?id=4" class="project-card">
-          <div class="card-preview"><img src="image/preview-palette.png" alt="Palettes" loading="lazy"></div>
-          <span class="project-tag">Outil</span>
-          <h3 class="project-title">Générateur de palettes</h3>
-          <p class="project-desc">Génère des palettes harmonieuses en 5 modes (mono, analogue, complémentaire...) avec export CSS.</p>
-          <span class="project-link">Voir le projet →</span>
-        </a>
-      </div>
-      <div class="reveal">
-        <a href="pages/project.html?id=5" class="project-card">
-          <div class="card-preview"><img src="image/preview-meteo.png" alt="Météo" loading="lazy"></div>
-          <span class="project-tag">Dashboard</span>
-          <h3 class="project-title">Dashboard Météo</h3>
-          <p class="project-desc">Météo en temps réel — recherche de ville, géoloc, prévisions 24h et 7 jours.</p>
-          <span class="project-link">Voir le projet →</span>
-        </a>
-      </div>
-      <div class="reveal">
-        <a href="pages/project.html?id=6" class="project-card">
-          <div class="card-preview"><img src="image/preview-nsi.png" alt="Projet NSI" loading="lazy"></div>
-          <span class="project-tag">Scolaire</span>
-          <h3 class="project-title">Projet Web NSI</h3>
-          <p class="project-desc">Mon premier projet scolaire NSI qui explore le monde d'internet, le web, les réseaux sociaux et les drapeaux en SVG.</p>
-          <span class="project-link">Voir le projet →</span>
-        </a>
-      </div>
-      <div class="reveal">
-        <a href="pages/project.html?id=7" class="project-card">
-          <div class="card-preview"><img src="image/preview-tjm.png" alt="TJM" loading="lazy"></div>
-          <span class="project-tag">Python</span>
-          <h3 class="project-title">Calculateur TJM</h3>
-          <p class="project-desc">App Flask pour calculer son TJM freelance — 5 statuts juridiques, sliders, graphique de répartition du CA et alertes automatiques.</p>
-          <span class="project-link">Voir le projet →</span>
-        </a>
-      </div>
-      <div class="reveal">
-        <a href="pages/project.html?id=8" class="project-card">
-          <div class="card-preview"><img src="image/preview-chatbot.png" alt="Chatbot" loading="lazy"></div>
-          <span class="project-tag">JS</span>
-          <h3 class="project-title">Chatbot Portfolio</h3>
-          <p class="project-desc">Assistant conversationnel qui répond aux questions sur moi, mes projets et mes compétences — moteur par mots-clés, interface chat animée.</p>
-          <span class="project-link">Voir le projet →</span>
-        </a>
-      </div>
-
+        <h2 class="section-title">Mes projets</h2>
+        <p style="color:var(--sub);margin-bottom:2rem;">9 projets construits from scratch</p>
+        <a href="pages/projects.html" class="btn btn-primary">Voir tous les projets →</a>
       </div>
     </div>
   </section>
