@@ -308,3 +308,18 @@ main { padding: 7rem 1.2rem 4rem; }
   transform: rotate(20deg);
   box-shadow: 0 0 16px var(--glow);
 }
+
+[data-theme="light"] nav {
+  background: rgba(244,243,255,0.9);
+}
+
+/* ── prefers-reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  #canvas { display: none; }
+  main { animation: none; opacity: 1; transform: none; }
+}

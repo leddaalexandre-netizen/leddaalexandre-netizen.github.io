@@ -191,7 +191,9 @@ main.innerHTML = `
 <a href="${BASE}index.html#projects" class="btn">← Retour aux projets</a>
 </div>`;
 } else {
-document.title = project.title + ' — Portfolio';
+document.title = project.title + ' — Alexandre LEDDA';
+const metaDesc = document.querySelector('meta[name="description"]');
+if (metaDesc) metaDesc.setAttribute('content', project.description.slice(0, 160));
 
 const techHTML = project.stack.map(t => `<span class="tech-badge">${t}</span>`).join('');
 const featHTML = project.features.map(f => `<li>${f}</li>`).join('');
@@ -265,21 +267,31 @@ init();
 let mouse = { x: -999, y: -999 };
 window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
 
-(function draw() {
-ctx.clearRect(0,0,W,H);
-for (let i = 0; i < particles.length; i++) {
-const p = particles[i];
-for (let j = i+1; j < particles.length; j++) {
-const dx = p.x - particles[j].x, dy = p.y - particles[j].y;
-const d = Math.sqrt(dx*dx+dy*dy);
-if (d < 110) { ctx.beginPath(); ctx.strokeStyle=`rgba(123,94,167,${0.12*(1-d/110)})`; ctx.lineWidth=0.5; ctx.moveTo(p.x,p.y); ctx.lineTo(particles[j].x,particles[j].y); ctx.stroke(); }
+let rafId;
+function draw() {
+  ctx.clearRect(0,0,W,H);
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    for (let j = i+1; j < particles.length; j++) {
+      const dx = p.x - particles[j].x, dy = p.y - particles[j].y;
+      const d = Math.sqrt(dx*dx+dy*dy);
+      if (d < 110) { ctx.beginPath(); ctx.strokeStyle=`rgba(123,94,167,${0.12*(1-d/110)})`; ctx.lineWidth=0.5; ctx.moveTo(p.x,p.y); ctx.lineTo(particles[j].x,particles[j].y); ctx.stroke(); }
+    }
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=`rgba(199,125,255,${p.a})`; ctx.fill();
+    p.x+=p.vx; p.y+=p.vy;
+    if (p.y<-5){p.y=H+5;p.x=rand(0,W);} if(p.x<-5)p.x=W+5; if(p.x>W+5)p.x=-5;
+  }
+  rafId = requestAnimationFrame(draw);
 }
-ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=`rgba(199,125,255,${p.a})`; ctx.fill();
-p.x+=p.vx; p.y+=p.vy;
-if (p.y<-5){p.y=H+5;p.x=rand(0,W);} if(p.x<-5)p.x=W+5; if(p.x>W+5)p.x=-5;
-}
-requestAnimationFrame(draw);
-})();
+draw();
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    cancelAnimationFrame(rafId);
+  } else {
+    draw();
+  }
+});
 
 /* ── Halo souris ── */
 const halo = document.getElementById('halo');

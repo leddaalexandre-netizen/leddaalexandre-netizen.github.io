@@ -7,8 +7,8 @@ const ctx    = canvas.getContext('2d');
 let W, H, particles = [];
 
 function resize() {
-W = canvas.width  = window.innerWidth;
-H = canvas.height = window.innerHeight;
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
 }
 resize();
 window.addEventListener('resize', () => { resize(); initParticles(); });
@@ -16,87 +16,91 @@ window.addEventListener('resize', () => { resize(); initParticles(); });
 function rand(min, max) { return Math.random() * (max - min) + min; }
 
 function initParticles() {
-particles = [];
-const count = Math.floor((W * H) / 12000);
-for (let i = 0; i < count; i++) {
-particles.push({
-x:  rand(0, W),
-y:  rand(0, H),
-r:  rand(0.5, 2),
-vx: rand(-0.2, 0.2),
-vy: rand(-0.3, -0.05),
-alpha: rand(0.2, 0.8),
-});
-}
+  particles = [];
+  const count = Math.floor((W * H) / 12000);
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x:     rand(0, W),
+      y:     rand(0, H),
+      r:     rand(0.5, 2),
+      vx:    rand(-0.2, 0.2),
+      vy:    rand(-0.3, -0.05),
+      alpha: rand(0.2, 0.8),
+    });
+  }
 }
 initParticles();
 
 let mouse = { x: -1000, y: -1000 };
 window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
 
+let rafId;
 function draw() {
-ctx.clearRect(0, 0, W, H);
+  ctx.clearRect(0, 0, W, H);
 
-// Connexions entre particules proches
-for (let i = 0; i < particles.length; i++) {
-for (let j = i + 1; j < particles.length; j++) {
-const dx = particles[i].x - particles[j].x;
-const dy = particles[i].y - particles[j].y;
-const dist = Math.sqrt(dx * dx + dy * dy);
-if (dist < 120) {
-ctx.beginPath();
-ctx.strokeStyle = `rgba(123,94,167,${0.15 * (1 - dist / 120)})`;
-ctx.lineWidth = 0.6;
-ctx.moveTo(particles[i].x, particles[i].y);
-ctx.lineTo(particles[j].x, particles[j].y);
-ctx.stroke();
-}
-}
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(123,94,167,${0.15 * (1 - dist / 120)})`;
+        ctx.lineWidth = 0.6;
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
 
-// Connexion souris
-const mx = particles[i].x - mouse.x;
-const my = particles[i].y - mouse.y;
-const md = Math.sqrt(mx * mx + my * my);
-if (md < 160) {
-ctx.beginPath();
-ctx.strokeStyle = `rgba(199,125,255,${0.3 * (1 - md / 160)})`;
-ctx.lineWidth = 0.8;
-ctx.moveTo(particles[i].x, particles[i].y);
-ctx.lineTo(mouse.x, mouse.y);
-ctx.stroke();
-}
+    const mx = particles[i].x - mouse.x;
+    const my = particles[i].y - mouse.y;
+    const md = Math.sqrt(mx * mx + my * my);
+    if (md < 160) {
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(199,125,255,${0.3 * (1 - md / 160)})`;
+      ctx.lineWidth = 0.8;
+      ctx.moveTo(particles[i].x, particles[i].y);
+      ctx.lineTo(mouse.x, mouse.y);
+      ctx.stroke();
+    }
 
-// Dessin particule
-const p = particles[i];
-ctx.beginPath();
-ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-ctx.fillStyle = `rgba(199,125,255,${p.alpha})`;
-ctx.fill();
+    const p = particles[i];
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(199,125,255,${p.alpha})`;
+    ctx.fill();
 
-// Mouvement
-p.x += p.vx;
-p.y += p.vy;
-if (p.y < -5)  { p.y = H + 5; p.x = rand(0, W); }
-if (p.x < -5)  p.x = W + 5;
-if (p.x > W+5) p.x = -5;
-}
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.y < -5)  { p.y = H + 5; p.x = rand(0, W); }
+    if (p.x < -5)  p.x = W + 5;
+    if (p.x > W+5) p.x = -5;
+  }
 
-requestAnimationFrame(draw);
+  rafId = requestAnimationFrame(draw);
 }
 draw();
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    cancelAnimationFrame(rafId);
+  } else {
+    draw();
+  }
+});
 
 /* ════════════════════════════════════════
 REVEAL AU SCROLL
 ════════════════════════════════════════ */
-const reveals = document.querySelectorAll('.reveal');
+const reveals  = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
-entries.forEach((e, i) => {
-if (e.isIntersecting) {
-// Délai en cascade pour les éléments enfants dans une grille
-setTimeout(() => e.target.classList.add('visible'), i * 60);
-observer.unobserve(e.target);
-}
-});
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      observer.unobserve(e.target);
+    }
+  });
 }, { threshold: 0.12 });
 reveals.forEach(el => observer.observe(el));
 
@@ -104,25 +108,54 @@ reveals.forEach(el => observer.observe(el));
 NAVBAR — FOND AU SCROLL
 ════════════════════════════════════════ */
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-navbar.style.background = window.scrollY > 40
-? 'rgba(10,10,15,0.95)'
-: 'rgba(10,10,15,0.7)';
+
+function updateNavBg() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  if (isLight) {
+    navbar.style.background = window.scrollY > 40
+      ? 'rgba(244,243,255,0.98)'
+      : 'rgba(244,243,255,0.85)';
+  } else {
+    navbar.style.background = window.scrollY > 40
+      ? 'rgba(10,10,15,0.95)'
+      : 'rgba(10,10,15,0.7)';
+  }
+}
+
+window.addEventListener('scroll', updateNavBg);
+
+/* ════════════════════════════════════════
+HAMBURGER MENU MOBILE
+════════════════════════════════════════ */
+const navToggle = document.getElementById('nav-toggle');
+const navUl     = document.querySelector('nav ul');
+
+navToggle.addEventListener('click', () => {
+  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', String(!expanded));
+  navUl.classList.toggle('open');
+});
+
+navUl.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.setAttribute('aria-expanded', 'false');
+    navUl.classList.remove('open');
+  });
 });
 
 /* ════════════════════════════════════════
 TILT SUR LES CARTES PROJET
 ════════════════════════════════════════ */
 document.querySelectorAll('.project-card').forEach(card => {
-card.addEventListener('mousemove', e => {
-const rect = card.getBoundingClientRect();
-const x = (e.clientX - rect.left) / rect.width  - 0.5;
-const y = (e.clientY - rect.top)  / rect.height - 0.5;
-card.style.transform = `translateY(-6px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg)`;
-});
-card.addEventListener('mouseleave', () => {
-card.style.transform = '';
-});
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    card.style.transform = `translateY(-6px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
 });
 
 /* ════════════════════════════════════════
@@ -130,14 +163,21 @@ ENVOI FORMULAIRE (EmailJS)
 ════════════════════════════════════════ */
 emailjs.init('scqTvt5tKjyeV3aAv');
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function sendMsg() {
-  const btn      = document.querySelector('#contact .btn');
-  const name     = document.getElementById('contact-name').value.trim();
-  const email    = document.getElementById('contact-email').value.trim();
-  const message  = document.getElementById('contact-message').value.trim();
+  const btn     = document.querySelector('#contact .btn');
+  const name    = document.getElementById('contact-name').value.trim();
+  const email   = document.getElementById('contact-email').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
 
   if (!name || !email || !message) {
     alert('Merci de remplir tous les champs.');
+    return;
+  }
+
+  if (!EMAIL_REGEX.test(email)) {
+    alert('Merci d\'entrer une adresse e-mail valide.');
     return;
   }
 
@@ -196,6 +236,7 @@ themeBtn.addEventListener('click', () => {
   root.setAttribute('data-theme', isLight ? 'dark' : 'light');
   themeBtn.textContent = isLight ? '🌙' : '☀️';
   localStorage.setItem('theme', isLight ? 'dark' : 'light');
+  updateNavBg();
 });
 
 /* ════════════════════════════════════════
@@ -205,34 +246,24 @@ const backToTop = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => {
   backToTop.classList.toggle('visible', window.scrollY > 400);
 });
+
 /* ════════════════════════════════════════
-TEXTE ANIMÉ (effet machine à écrire)
+HALO CURSEUR
 ════════════════════════════════════════ */
-const phrases = ['Créer.', 'Innover.', 'Inspirer.'];
-const titleEl = document.querySelector('.hero-title');
-let pi = 0, ci = 0, deleting = false, lineIndex = 0;
-const lines = titleEl.innerHTML.split('<br>');
-
-function typeLoop() {
-// Effet simple : pulse sur le titre au chargement déjà animé en CSS
-// On ajoute juste un curseur clignotant sur la dernière ligne
-}
-
-// Curseur lumineux qui suit la souris (halo)
 const halo = document.createElement('div');
 Object.assign(halo.style, {
-position: 'fixed',
-width: '350px',
-height: '350px',
-borderRadius: '50%',
-background: 'radial-gradient(circle, rgba(123,94,167,0.12) 0%, transparent 70%)',
-pointerEvents: 'none',
-zIndex: '0',
-transform: 'translate(-50%,-50%)',
-transition: 'left 0.08s, top 0.08s',
+  position:     'fixed',
+  width:        '350px',
+  height:       '350px',
+  borderRadius: '50%',
+  background:   'radial-gradient(circle, rgba(123,94,167,0.12) 0%, transparent 70%)',
+  pointerEvents:'none',
+  zIndex:       '0',
+  transform:    'translate(-50%,-50%)',
+  transition:   'left 0.08s, top 0.08s',
 });
 document.body.appendChild(halo);
 window.addEventListener('mousemove', e => {
-halo.style.left = e.clientX + 'px';
-halo.style.top  = e.clientY + 'px';
+  halo.style.left = e.clientX + 'px';
+  halo.style.top  = e.clientY + 'px';
 });

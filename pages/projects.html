@@ -3,14 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projets — Alexandre</title>
+  <title>Projets — Alexandre LEDDA</title>
+  <meta name="description" content="Tous les projets d'Alexandre LEDDA : Snake Canvas, dashboard météo, quiz interactif, convertisseur d'unités, chatbot, générateur de palettes et plus." />
+  <meta property="og:title" content="Projets — Alexandre LEDDA" />
+  <meta property="og:description" content="9 projets web construits from scratch en HTML, CSS, JavaScript et Python." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#7b5ea7" />
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/projects.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('theme');
+      if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
 </head>
 <body>
 
   <header class="page-header">
-    <a href="../index.html" class="back-link">← Accueil</a>
+    <div class="header-top">
+      <a href="../index.html" class="back-link">← Accueil</a>
+      <button id="theme-toggle" title="Changer le thème">🌙</button>
+    </div>
     <div class="header-text">
       <p class="section-label">Portfolio</p>
       <h1>Mes projets</h1>
@@ -147,6 +161,15 @@
 
         empty.classList.toggle('hidden', visible > 0);
       });
+    });
+
+    const themeBtn = document.getElementById('theme-toggle');
+    if (localStorage.getItem('theme') === 'light') themeBtn.textContent = '☀️';
+    themeBtn.addEventListener('click', () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
+      themeBtn.textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('theme', isLight ? 'dark' : 'light');
     });
   </script>
 

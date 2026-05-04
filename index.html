@@ -4,7 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alexandre | Portfolio</title>
+  <title>Alexandre LEDDA — Portfolio</title>
+  <meta name="description" content="Portfolio d'Alexandre LEDDA, lycéen développeur. Projets web en HTML, CSS, JavaScript et Python — Snake, dashboard météo, convertisseur, chatbot et plus." />
+  <meta property="og:title" content="Alexandre LEDDA — Portfolio" />
+  <meta property="og:description" content="Lycéen développeur — projets concrets en HTML, CSS, JS et Python. Moniteur de ski le jour, développeur la nuit." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://leddaalexandre-netizen.github.io/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Alexandre LEDDA — Portfolio" />
+  <meta name="twitter:description" content="Lycéen développeur — projets concrets en HTML, CSS, JS et Python." />
+  <meta name="theme-color" content="#7b5ea7" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style-index.css" />
 </head>
@@ -34,6 +43,9 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="https://github.com/leddaalexandre-netizen" target="_blank" rel="noopener">GitHub</a></li>
     </ul>
+    <button id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <button id="theme-toggle" title="Changer le thème">🌙</button>
   </nav>
 
@@ -183,8 +195,11 @@
         </p>
 
         <div class="input-group">
-          <input id="contact-name" type="text" placeholder="Votre nom" />
-          <input id="contact-email" type="email" placeholder="Votre e-mail" />
+          <label for="contact-name" class="sr-only">Votre nom</label>
+          <input id="contact-name" type="text" placeholder="Votre nom" autocomplete="name" />
+          <label for="contact-email" class="sr-only">Votre e-mail</label>
+          <input id="contact-email" type="email" placeholder="Votre e-mail" autocomplete="email" />
+          <label for="contact-message" class="sr-only">Votre message</label>
           <textarea id="contact-message" placeholder="Votre message..."></textarea>
 
           <button class="btn btn-primary"
